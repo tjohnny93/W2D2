@@ -6,7 +6,7 @@ class Rook < Piece
   end
   
   def symbol
-    @symbol = "R "
+    @symbol = " ♜ " 
   end
 
 end
@@ -18,7 +18,7 @@ class Queen < Piece
   end
 
   def symbol
-    @symbol = "Q "
+    @symbol = " ♕ "
   end
 
 end
@@ -31,7 +31,7 @@ class Bishop < Piece
   end
 
   def symbol
-    @symbol = "B "
+    @symbol = " ♝ "
   end
 
 end

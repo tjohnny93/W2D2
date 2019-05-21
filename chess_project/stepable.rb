@@ -6,7 +6,7 @@ class Knight < Piece
   end
 
   def symbol
-    @symbol = "k "
+    @symbol = " ♞ "
   end
 
 end
@@ -18,7 +18,7 @@ class King < Piece
   end
 
   def symbol
-    @symbol = "K'"
+    @symbol = " ♚ "
   end
 
 end

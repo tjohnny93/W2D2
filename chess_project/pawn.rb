@@ -6,7 +6,7 @@ class Pawn < Piece
   end
   
   def symbol
-    @symbol = "P "
+    @symbol = " ♟ "
   end
 
 end
