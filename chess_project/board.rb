@@ -15,12 +15,13 @@ class Board
   end
 
   def move_piece(start_pos, end_pos)
-    before = self[start_pos]
-    after = self[end_pos]
-    if valid_pos?(start_pos) && valid_pos?(end_pos)
-    else 
-      raise "No piece at start pos" if !before.is_a?(Piece)
+    
+    if !valid_pos?(start_pos) && !valid_pos?(end_pos)
+      raise "One of the entered pos is outside of the board"
     end
+
+    raise "No piece at start pos" if !self[start_pos].is_a?(Piece)
+    
     self[start_pos], self[end_pos] = self[end_pos], self[start_pos]
   end
 
@@ -36,11 +37,11 @@ class Board
     if (pos[0] <= 7 && pos[0] >= 0) && (pos[1] <= 7 && pos[1] >= 0)
       return true
     end
-    raise "Position is outside of the board"
+    false
   end
 
 end
 
 game = Board.new
-game.move_piece([0,0], [4,4])
+game.move_piece([-1,5], [5,6])
 p game.board
