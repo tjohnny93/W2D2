@@ -12,6 +12,7 @@ class Board
   [Piece.new, Piece.new, Piece.new, Piece.new, Piece.new, Piece.new, Piece.new, Piece.new],
   [Piece.new, Piece.new, Piece.new, Piece.new, Piece.new, Piece.new, Piece.new, Piece.new]
   ]
+ 
   end
 
   def move_piece(start_pos, end_pos)
@@ -39,6 +40,8 @@ class Board
     end
     false
   end
+
+  
 
 end
 
