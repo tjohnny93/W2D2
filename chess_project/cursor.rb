@@ -94,10 +94,14 @@ class Cursor
   end
 
   def update_pos(diff)
-    @current_pos[0] += diff[0]
-    @current_pos[1] += diff[0]
-    
+    test_pos = @current_pos
+    test_pos[0] += diff[0]
+    test_pos[1] += diff[0]
 
-
+    if valid_pos?(test_pos)
+      @current_pos[0] += diff[0]
+      @current_pos[1] += diff[0]
+    end
+    @current_pos
   end
 end
