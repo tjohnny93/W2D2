@@ -25,11 +25,14 @@ class Board
   end
 
   def [](pos) #pos = [0,0]
-    @board[pos[0]][pos[1]]
+    debugger
+    row, col = pos
+    @board[row][col]
   end
 
   def []=(pos, piece)
-    @board[pos[0]][pos[1]] = piece
+    row, col = pos
+    @board[row][col] = piece
   end
 
   def valid_pos?(pos)
@@ -43,17 +46,17 @@ class Board
     @board.each_with_index do |row, i|
       row.each_with_index do |col, j|
         if i == 0 && (j == 0 || j == 7) 
-          board[i][j] = Rook.new(:white, self, [i, j])
+          @board[i][j] = Rook.new(:white, self, [i, j])
         elsif i == 0 && (j == 1 || j == 6)
-          board[i][j] = Knight.new(:white, self, [i, j])
+          @board[i][j] = Knight.new(:white, self, [i, j])
         elsif i == 0 && (j == 2 || j == 5)
-          board[i][j] = Bishop.new(:white, self, [i, j])
+          @board[i][j] = Bishop.new(:white, self, [i, j])
         elsif i == 0 && (j == 3)
-          board[i][j] = Queen.new(:white, self, [i, j])
+          @board[i][j] = Queen.new(:white, self, [i, j])
         elsif i == 0 && (j == 4)
-          board[i][j] = King.new(:white, self, [i, j])
+          @board[i][j] = King.new(:white, self, [i, j])
         elsif i == 1
-          board[i][j] = Pawn.new(:white, self, [i, j])
+          @board[i][j] = Pawn.new(:white, self, [i, j])
         end
       end
     end
@@ -63,17 +66,17 @@ class Board
     @board.each_with_index do |row, i|
       row.each_with_index do |col, j|
         if i == 7 && (j == 0 || j == 7) 
-          board[i][j] = Rook.new(:black, self, [i, j])
+          @board[i][j] = Rook.new(:black, self, [i, j])
         elsif i == 7 && (j == 1 || j == 6)
-          board[i][j] = Knight.new(:black, self, [i, j])
+          @board[i][j] = Knight.new(:black, self, [i, j])
         elsif i == 7 && (j == 2 || j == 5)
-          board[i][j] = Bishop.new(:black, self, [i, j])
+          @board[i][j] = Bishop.new(:black, self, [i, j])
         elsif i == 7 && (j == 3)
-          board[i][j] = Queen.new(:black, self, [i, j])
+          @board[i][j] = Queen.new(:black, self, [i, j])
         elsif i == 7 && (j == 4)
-          board[i][j] = King.new(:black, self, [i, j])
+          @board[i][j] = King.new(:black, self, [i, j])
         elsif i == 6
-          board[i][j] = Pawn.new(:black, self, [i, j])
+          @board[i][j] = Pawn.new(:black, self, [i, j])
         end
       end
     end
@@ -83,3 +86,4 @@ end
 
 game = Board.new
 p game.board
+# p game.[]([0,0])

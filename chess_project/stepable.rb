@@ -1,16 +1,24 @@
 
 class Knight < Piece
+  def initialize(color, board, pos)
+    super
+    symbol
+  end
 
   def symbol
-    @symbol = "Kn"
+    @symbol = "k "
   end
 
 end
 
 class King < Piece
+   def initialize(color, board, pos)
+    super
+    symbol
+  end
 
   def symbol
-    @symbol = "K "
+    @symbol = "K'"
   end
 
 end

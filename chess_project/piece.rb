@@ -3,7 +3,7 @@ class Piece
   def initialize(color, board, pos)
     @color = color
     @board = board
-    @pos = []
+    @pos = pos
     @symbol
   end
 
@@ -22,5 +22,9 @@ class Piece
   def pos=(val)
   
   end
+  
+  # def inspect
+    # print "#{@symbol} #{@color}"
+  # end
 
 end

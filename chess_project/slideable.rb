@@ -1,5 +1,9 @@
 
 class Rook < Piece
+  def initialize(color, board, pos)
+    super
+    symbol
+  end
   
   def symbol
     @symbol = "R "
@@ -8,6 +12,10 @@ class Rook < Piece
 end
 
 class Queen < Piece
+  def initialize(color, board, pos)
+    super
+    symbol
+  end
 
   def symbol
     @symbol = "Q "
@@ -16,6 +24,11 @@ class Queen < Piece
 end
 
 class Bishop < Piece
+
+  def initialize(color, board, pos)
+    super
+    symbol
+  end
 
   def symbol
     @symbol = "B "
