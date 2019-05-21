@@ -1,6 +1,7 @@
 require "colorize"
 require_relative "cursor.rb"
 require_relative "board.rb"
+require "byebug"
 
 class Display
   def initialize
@@ -8,8 +9,11 @@ class Display
   end
 
   def render
+    debugger
     @cursor.board.each do |row|
-      puts "#{row.join(" ")}"
+      row.each do |ele|
+        p ele.symbol
+      end
     end
   end
 

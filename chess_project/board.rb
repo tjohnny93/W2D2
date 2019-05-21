@@ -1,18 +1,16 @@
 require_relative "piece.rb"
+require_relative "slideable.rb"
+require_relative "stepable.rb"
+require_relative "pawn.rb"
+require_relative "null_piece.rb"
 require "byebug"
+
 class Board
   attr_reader :board
   def initialize
-    @board = [[Piece.new, Piece.new, Piece.new, Piece.new, Piece.new, Piece.new, Piece.new, Piece.new],
-  [Piece.new, Piece.new, Piece.new, Piece.new, Piece.new, Piece.new, Piece.new, Piece.new],
-  [nil, nil, nil, nil, nil, nil, nil, nil],
-  [nil, nil, nil, nil, nil, nil, nil, nil],
-  [nil, nil, nil, nil, nil, nil, nil, nil],
-  [nil, nil, nil, nil, nil, nil, nil, nil],
-  [Piece.new, Piece.new, Piece.new, Piece.new, Piece.new, Piece.new, Piece.new, Piece.new],
-  [Piece.new, Piece.new, Piece.new, Piece.new, Piece.new, Piece.new, Piece.new, Piece.new]
-  ]
- 
+    @board = Array.new(8) {Array.new(8, NullPiece.instance)} 
+    populate_white_pieces
+    populate_black_pieces
   end
 
   def move_piece(start_pos, end_pos)
@@ -41,10 +39,47 @@ class Board
     false
   end
 
-  
+  def populate_white_pieces
+    @board.each_with_index do |row, i|
+      row.each_with_index do |col, j|
+        if i == 0 && (j == 0 || j == 7) 
+          board[i][j] = Rook.new(:white, self, [i, j])
+        elsif i == 0 && (j == 1 || j == 6)
+          board[i][j] = Knight.new(:white, self, [i, j])
+        elsif i == 0 && (j == 2 || j == 5)
+          board[i][j] = Bishop.new(:white, self, [i, j])
+        elsif i == 0 && (j == 3)
+          board[i][j] = Queen.new(:white, self, [i, j])
+        elsif i == 0 && (j == 4)
+          board[i][j] = King.new(:white, self, [i, j])
+        elsif i == 1
+          board[i][j] = Pawn.new(:white, self, [i, j])
+        end
+      end
+    end
+  end
+
+  def populate_black_pieces
+    @board.each_with_index do |row, i|
+      row.each_with_index do |col, j|
+        if i == 7 && (j == 0 || j == 7) 
+          board[i][j] = Rook.new(:black, self, [i, j])
+        elsif i == 7 && (j == 1 || j == 6)
+          board[i][j] = Knight.new(:black, self, [i, j])
+        elsif i == 7 && (j == 2 || j == 5)
+          board[i][j] = Bishop.new(:black, self, [i, j])
+        elsif i == 7 && (j == 3)
+          board[i][j] = Queen.new(:black, self, [i, j])
+        elsif i == 7 && (j == 4)
+          board[i][j] = King.new(:black, self, [i, j])
+        elsif i == 6
+          board[i][j] = Pawn.new(:black, self, [i, j])
+        end
+      end
+    end
+  end
 
 end
 
 game = Board.new
-game.move_piece([-1,5], [5,6])
 p game.board
